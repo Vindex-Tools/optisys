@@ -23,6 +23,9 @@ optisys/
     └── tcpview.exe
 ```
 
+> [!NOTE]
+> The two compressed archives (`optisys_x64_compressed.zip` and `optisys_x86_compressed.zip`) are meant for quick deployment and use directly within target environments. They contain only `autoeula.bat` and their corresponding architecture-specific programs to minimize payload transfer size.
+
 ## The Core Arsenal
 
 | Tool | Executable | Interface | Primary Blue Team Use Case & Quick Reference |
@@ -50,3 +53,19 @@ This script automates system-wide EULA acceptance (HKCU & HKLM registry paths) t
 
 ### Step 3: Hunt and Catch the Red Team
 You are now ready to run the programs. Navigate to the appropriate architecture folder (`x64` or `x86`) and begin hunting down the Red Team's C2 channels, persistent services, and anomalous processes.
+
+## Using Sigcheck
+
+Below are some common commands for hunting unsigned binaries, drivers, and DLLs:
+
+```cmd
+# Scans the driver directory recursively (-s) and outputs ONLY unsigned files (-u)
+sigcheck.exe -s -u C:\Windows\System32\drivers\ > C:\unsigned_drivers.txt
+
+# Scans the main Windows binaries for unsigned executables or DLLs
+sigcheck.exe -s -u C:\Windows\System32\*.exe > C:\unsigned_exes.txt
+sigcheck.exe -s -u C:\Windows\System32\*.dll > C:\unsigned_dlls.txt
+
+# Checks the common malware hiding spot in ProgramData
+sigcheck.exe -s -u -e C:\ProgramData\ > C:\unsigned_programdata.txt
+```
