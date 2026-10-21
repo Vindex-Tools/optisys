@@ -11,20 +11,17 @@ optisys/
 │   ├── Autoruns64.exe
 │   ├── procexp64.exe
 │   ├── Procmon64.exe
-│   ├── PsExec64.exe    (CLI ONLY)
 │   ├── sigcheck64.exe  (CLI ONLY)
+│   ├── sysmon64.exe    (CLI ONLY)
 │   └── tcpview64.exe
 └── x86/          (32-bit tools)
     ├── Autoruns.exe
     ├── procexp.exe
     ├── Procmon.exe
-    ├── PsExec.exe      (CLI ONLY)
     ├── sigcheck.exe    (CLI ONLY)
+    ├── sysmon.exe      (CLI ONLY)
     └── tcpview.exe
 ```
-
-> [!NOTE]
-> The two compressed archives (`optisys_x64_compressed.zip` and `optisys_x86_compressed.zip`) are meant for quick deployment and use directly within target environments. They contain only `autoeula.bat` and their corresponding architecture-specific programs to minimize payload transfer size.
 
 ## The Core Arsenal
 
@@ -34,9 +31,8 @@ optisys/
 | **Autoruns** | `Autoruns.exe` / `Autoruns64.exe` | **GUI** | It shows every single program, driver, scheduled task, and service configured to run automatically when your Windows computer boots up or you log in. |
 | **TCPView** | `tcpview.exe` / `tcpview64.exe` | **GUI** | It displays active TCP and UDP connections in real time, shows which program owns each connection. Easy live network mapping to trace persistent high-port C2 beacons back to their originating PIDs. |
 | **Process Monitor** | `Procmon.exe` / `Procmon64.exe` | **GUI** | Deep file system and registry triage. <br>**Warning**: *Must apply strict process filters immediately to prevent UI lag and memory exhaustion.* |
-| **PsExec** | `PsExec.exe` / `PsExec64.exe` | **CLI** | CLI utility to spawn an elevated shell. Execute `PsExec64.exe -sid cmd.exe` to obtain a shell running as `NT AUTHORITY\SYSTEM`. |
 | **Sigcheck** | `sigcheck.exe` / `sigcheck64.exe` | **CLI** | Signature validation tool. Execute `sigcheck64.exe -e -u C:\Windows\System32` to scan for unsigned binaries and anomalous code. |
-| **Sysmon** | `sysmon64.exe` (Remote Deployment) | **CLI / Service** |  It logs deep, detailed activity about processes, network connections, and file changes directly to the Windows Event Log to help find malware and security threats. |
+| **Sysmon** | `sysmon.exe` / `sysmon64.exe` | **CLI / Service** | It logs deep, detailed activity about processes, network connections, and file changes directly to the Windows Event Log to help find malware and security threats. |
 
 ## Setup Instructions (Quick-Start Guide)
 
